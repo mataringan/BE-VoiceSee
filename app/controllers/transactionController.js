@@ -42,8 +42,8 @@ module.exports = {
           userId: userId,
         },
         include: {
-          user: true, // Sertakan informasi pengguna (user)
-          product: true, // Sertakan informasi produk
+          user: true,
+          product: true,
         },
       });
       res.json(transaction);
