@@ -1,0 +1,27 @@
+{
+  "name": "express-prisma-postgresql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r dotenv/config bin/www",
+    "develop": "nodemon -r dotenv/config bin/www",
+    "db:studio": "npx prisma studio",
+    "db:push": "npx prisma db push --force-reset && npx prisma db push",
+    "db:seed": "node ./utils/run-seeder.js",
+    "db:push:seed": "npm run db:push && npm run db:seed",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.2.0",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3",
+    "prisma": "^5.2.0",
+    "uuid": "^9.0.0"
+  }
+}
