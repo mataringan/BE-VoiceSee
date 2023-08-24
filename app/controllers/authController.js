@@ -15,17 +15,17 @@ function encryptPassword(password) {
   });
 }
 
-function checkPassword(encryptedPassword, password) {
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, encryptedPassword, (err, isPasswordCorrect) => {
-      if (!!err) {
-        reject(err);
-        return;
-      }
-      resolve(isPasswordCorrect);
-    });
-  });
-}
+// function checkPassword(encryptedPassword, password) {
+//   return new Promise((resolve, reject) => {
+//     bcrypt.compare(password, encryptedPassword, (err, isPasswordCorrect) => {
+//       if (!!err) {
+//         reject(err);
+//         return;
+//       }
+//       resolve(isPasswordCorrect);
+//     });
+//   });
+// }
 
 function createToken(payload) {
   return jwt.sign(payload, process.env.JWT_SIGNATURE_KEY || "Rahasia");
