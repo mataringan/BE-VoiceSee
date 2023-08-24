@@ -1,5 +1,9 @@
-const todos = require("./todos");
+const users = require("./user");
+const kelas = require("./kelas");
+const materi = require("./materi");
 
 module.exports = {
-  todos,
+  users,
+  kelas,
+  materi,
 };

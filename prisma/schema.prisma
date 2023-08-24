@@ -12,22 +12,25 @@ datasource db {
 model User {
   id       String @id @db.Uuid
   username String   @unique
-  transactions Transaction[]
+  password String   
 }
 
-model Product {
+
+model Kelas {
   id       String @id @db.Uuid
-  name     String
-  price    Int
-  transactions Transaction[]
+  name     String   @unique
+  materi_amount Int
+  quiz_amount   Int
+  materi Materi[]
 }
 
-model Transaction {
-  id         String @id @db.Uuid
-  userId     String @db.Uuid
-  productId  String @db.Uuid
-  quantity   Int
-  amount     Int
-  user       User      @relation(fields: [userId], references: [id])
-  product    Product   @relation(fields: [productId], references: [id])
+model Materi {
+  id       String @id @db.Uuid
+  idKelas  String @db.Uuid
+  name      String @unique
+  materi    String
+  url       String
+  kelas     Kelas   @relation(fields: [idKelas], references: [id])
 }
+
+

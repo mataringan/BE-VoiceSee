@@ -1,22 +1,31 @@
 // const { createTodo } = require("../app/controllers/todoController");
 
-const { createProduct } = require("../app/controllers/productController");
+const { login, whoami } = require("../app/controllers/authController");
 const {
-  createTransaction,
-  getTransactionByUser,
-} = require("../app/controllers/transactionController");
-const { createUser } = require("../app/controllers/userController");
+  getAllKelas,
+  getKelasById,
+} = require("../app/controllers/kelasController");
+const {
+  getAllMateri,
+  getMateriById,
+  getMateriByClass,
+} = require("../app/controllers/materiController");
+const { authorize } = require("../app/middleware/authorize");
 
 const router = require("express").Router();
 
-// router.post("/todo", createTodo);
+router.post("/login", login);
 
-router.post("/user", createUser);
+router.get("/whoami", authorize, whoami);
 
-router.post("/product", createProduct);
+router.get("/kelas", authorize, getAllKelas);
 
-router.post("/transaction", createTransaction);
+router.get("/kelas/:id", authorize, getKelasById);
 
-router.get("/transaction/:id", getTransactionByUser);
+router.get("/materi", authorize, getAllMateri);
+
+router.get("/materi/:id", authorize, getMateriById);
+
+router.get("/materiClass/:id", authorize, getMateriByClass);
 
 module.exports = router;
