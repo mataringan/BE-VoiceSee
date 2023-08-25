@@ -38,4 +38,30 @@ module.exports = {
       });
     }
   },
+
+  async getKelasByQuery(req, res) {
+    try {
+      const kelas = req.query.type;
+
+      const data = await prisma.kelas.findMany({
+        where: {
+          name: {
+            contains: kelas,
+            mode: "insensitive",
+          },
+        },
+      });
+
+      res.status(200).json({
+        status: "success",
+        message: "get data by query",
+        data: data,
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "success",
+        message: error.message,
+      });
+    }
+  },
 };
